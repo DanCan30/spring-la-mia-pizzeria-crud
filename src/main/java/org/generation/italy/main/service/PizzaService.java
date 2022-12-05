@@ -1,6 +1,7 @@
 package org.generation.italy.main.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.generation.italy.main.pojo.Pizza;
 import org.generation.italy.main.repo.PizzaRepo;
@@ -21,5 +22,9 @@ public class PizzaService {
 	public List<Pizza> findAll() {
 		
 		return pizzaRepo.findAll();
+	}
+	
+	public Optional<Pizza> findPizzaById(int id) {
+		return pizzaRepo.findById(id);
 	}
 }

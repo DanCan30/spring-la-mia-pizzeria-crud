@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body th:object="${pizza}">
     <h1>Pizzeria</h1>
-    <form method="POST" action="/pizza/create">
-		
+    <form method="POST" action="">
+		<input type="number" name="id" th:field="*{id}" hidden>
 		<label for="name">Name</label>
-		<input type="text" name="name"><br>
+		<input type="text" name="name" th:field="*{name}"><br>
 		
 		<label for="description">Description</label>
-		<textarea name="description" style="resize: none"></textarea><br>
+		<textarea name="description" style="resize: none"  th:field="*{description}"></textarea><br>
 		
 		<label for="price">Price</label>
-		<input type="number" name="price"><br>
+		<input type="number" name="price" th:field="*{price}"><br>
 		
-		<button type="submit">Create</button>
+		<button type="submit">Edit</button>
 		
 	</form>
 </body>
