@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.validation.Valid;
+
 @Controller
 @RequestMapping("/")
 public class PizzaController {
@@ -59,7 +61,7 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/create")
-	public String savePizza(@ModelAttribute("pizza") Pizza pizza) {
+	public String savePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
 		
 		pizzaService.save(pizza);
 		
@@ -83,9 +85,16 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/edit/{id}")
-	public String updatePizza(@ModelAttribute("pizza") Pizza pizza) {
+	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
 		pizzaService.save(pizza);
 		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/pizza/delete/{id}")
+	public String deletePizza(@PathVariable("id") int id) {
+		
+		pizzaService.deletePizzaById(id);
 		return "redirect:/";
 	}
 	

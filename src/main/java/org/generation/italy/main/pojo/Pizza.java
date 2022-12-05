@@ -7,7 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizza")
@@ -18,6 +20,8 @@ public class Pizza {
 	private int id;
 	
 	@NotNull
+	@NotEmpty(message = "This field can't be empty.")
+	@Size(min = 3, max = 32, message = "The name's length must be between 3 and 32 characters.")
 	@Column(name = "name")
 	private String name;
 	
@@ -25,7 +29,7 @@ public class Pizza {
 	@Column(name = "description")
 	private String description;
 	
-	@NotNull
+	@NotNull(message = "This field can't be empty.")
 	@Column(name = "price")
 	private int price;
 	
