@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,19 +8,8 @@
 </head>
 <body th:object="${pizza}">
     <h1>Pizzeria</h1>
-    <form method="POST" action="/pizza/edit/{id} (id = *{id})">
-		<input type="number" name="id" th:field="*{id}" hidden>
-		<label for="name">Name</label>
-		<input type="text" name="name" th:field="*{name}"><br>
-		
-		<label for="description">Description</label>
-		<textarea name="description" style="resize: none"  th:field="*{description}"></textarea><br>
-		
-		<label for="price">Price</label>
-		<input type="number" name="price" th:field="*{price}"><br>
-		
-		<button type="submit">Edit</button>
-		
-	</form>
+
+	<div th:insert="fragments :: form('/pizza/edit/{id} (id = *{id})', 'POST', 'Edit')"></div>
+	
 </body>
 </html>

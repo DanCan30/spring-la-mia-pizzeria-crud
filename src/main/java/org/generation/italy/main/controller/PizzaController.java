@@ -60,7 +60,7 @@ public class PizzaController {
 		return "create";
 	}
 	
-	@PostMapping("/pizza/create")
+	@PostMapping("/pizza/create/")
 	public String savePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
 		
 		pizzaService.save(pizza);

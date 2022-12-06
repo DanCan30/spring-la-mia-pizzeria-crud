@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<form
+		th:fragment="form(action, method, submitType)"
+		th:action="${action}"
+		th:method="${method}"
+		>
+		<input type="number" name="id" th:field="*{id}" hidden>
+		<label for="name">Name</label>
+		<input type="text" name="name" th:field="*{name}"><br>
+		
+		<label for="description">Description</label>
+		<textarea name="description" style="resize: none"  th:field="*{description}"></textarea><br>
+		
+		<label for="price">Price</label>
+		<input type="number" name="price" th:field="*{price}"><br>
+		
+		<button type="submit" th:text="${submitType}"></button>
+	</form>
+</body>
+</html>
