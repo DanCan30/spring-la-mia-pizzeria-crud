@@ -8,7 +8,17 @@
 </head>
 <body th:object="${pizza}">
     <h1>Pizzeria</h1>
-
+    
+      <h3 th:if="${errors}">Errors: </h3>
+    
+    <ul>
+		<li
+    		th:each="error : ${errors}"
+    		th:object="${error}"
+    		th:text="|*{defaultMessage}|"
+    	>
+    	</li>
+	</ul>
 	<div th:insert="fragments :: form('/pizza/edit/{id} (id = *{id})', 'POST', 'Edit')"></div>
 	
 </body>

@@ -8,11 +8,13 @@ import org.generation.italy.main.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 
@@ -61,7 +63,14 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/create")
-	public String savePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
+	public String savePizza(@Valid @ModelAttribute("pizza") Pizza pizza,
+							BindingResult bindingResult, RedirectAttributes redirectAttributes  ) {
+		
+		if(bindingResult.hasErrors()) {
+			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+			return "redirect:/pizza/create";
+		}
+		
 		
 		pizzaService.save(pizza);
 		
@@ -85,9 +94,16 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/edit/{id}")
-	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
-		pizzaService.save(pizza);
+	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza,
+								BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
+		if(bindingResult.hasErrors()) {
+			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+			return "redirect:/pizza/edit/" + pizza.getId();
+		}
+		
+		pizzaService.save(pizza);
+
 		return "redirect:/";
 	}
 	

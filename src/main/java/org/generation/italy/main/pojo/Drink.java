@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -19,7 +20,7 @@ public class Drink {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
+	@NotEmpty(message="Name field can't be empty.")
 	@Column(name = "name", unique = true)
 	private String name;
 	
@@ -28,10 +29,10 @@ public class Drink {
 	@Column(name = "description")
 	private String description;
 	
-	@NotNull
-	@Min(1)
+	@NotNull(message = "Price field can't be empty.")
+	@Min(value= 1, message= "the price must be 1 or higher.")
 	@Column(name = "price")
-	private int price;
+	private Integer price;
 	
 	public Drink() {}
 	
@@ -62,10 +63,10 @@ public class Drink {
 		return this.description;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public int getPrice() {
+	public Integer getPrice() {
 		return this.price;
 	}
 }
