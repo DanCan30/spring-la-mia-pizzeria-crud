@@ -30,7 +30,7 @@ public class PizzaController {
 		
 		model.addAttribute("pizzas", pizzas);
 		
-		return "index";
+		return "pizza/index";
 	}
 	
 	@GetMapping("/pizza/{id}")
@@ -46,7 +46,7 @@ public class PizzaController {
 		
 		model.addAttribute("pizza", pizza);
 		
-		return "pizza";
+		return "/pizza/pizza";
 		
 	}
 	
@@ -57,10 +57,10 @@ public class PizzaController {
 		
 		model.addAttribute("pizza", pizza);
 		
-		return "create";
+		return "/pizza/create";
 	}
 	
-	@PostMapping("/pizza/create/")
+	@PostMapping("/pizza/create")
 	public String savePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
 		
 		pizzaService.save(pizza);
@@ -81,7 +81,7 @@ public class PizzaController {
 		
 		model.addAttribute("pizza", pizza);
 		
-		return "edit";
+		return "/pizza/edit";
 	}
 	
 	@PostMapping("/pizza/edit/{id}")

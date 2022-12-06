@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body th:object="${pizza}">
-    <h1>Pizzeria</h1>
+<body th:object="${drink}">
+    <h1>Drink</h1>
 	<h2>
 		[[*{name}]]
 	</h2>
@@ -17,8 +17,7 @@
 	<p>
 		[[*{description}]]
 	</p>
-	<a th:href="@{/}"
-	>
+	<a href="/drink">
 		Go back
 	</a>
 </body>

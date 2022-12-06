@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body th:object="${pizza}">
-    <h1>Pizzeria</h1>
+<body th:object="${drink}">
+    <h1>Drink List</h1>
     
-	<div th:insert="fragments :: form('/pizza/create/', 'POST', 'Add')"></div>
+	<div th:insert="fragments :: form('/drink/create', 'POST', 'Add')"></div>
 	
 </body>
 </html>

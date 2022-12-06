@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>Pizzeria</h1>
-    <a
-		th:href="@{/pizza/create}"
-    >
+    <a href="/pizza/create">
     	Add a new pizza...
     </a>
+    <br>
+    <br>
+    <a href="/drink">Go to the drink list...</a>
     
     <h3 th:if="${pizzas.size()} == 0">There are no pizzas in the menu</h3>
 
