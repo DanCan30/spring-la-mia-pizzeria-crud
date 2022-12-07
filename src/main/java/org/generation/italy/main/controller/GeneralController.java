@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/general")
-public class SearchController {
+public class GeneralController {
 
 	public static class PriceComparator implements Comparator<PriceableInt> {
 
