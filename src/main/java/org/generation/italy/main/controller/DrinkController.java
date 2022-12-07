@@ -109,7 +109,7 @@ public class DrinkController {
 	}
 	
 	@GetMapping("/search")
-	public String searchDrinkById(@RequestParam(name = "query", required = false) String query, Model model) {
+	public String searchDrinkByName(@RequestParam(name = "query", required = false) String query, Model model) {
 		
 		List<Drink> drinks = query == null
 							? drinkService.findAll()
