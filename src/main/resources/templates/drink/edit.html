@@ -7,18 +7,9 @@
     <title>Document</title>
 </head>
 <body th:object="${drink}">
-    <h1>Pizzeria</h1>
+    <h1>Drink List</h1>
 
-      <h3 th:if="${errors}">Errors: </h3>
-    
-    <ul>
-		<li
-    		th:each="error : ${errors}"
-    		th:object="${error}"
-    		th:text="|*{defaultMessage}|"
-    	>
-    	</li>
-	</ul>
+	<div th:insert="fragments :: error()"></div>
 	
 	<div th:insert="fragments :: crud-form('/drink/edit/{id} (id = *{id})', 'POST', 'Edit')"></div>
 	
