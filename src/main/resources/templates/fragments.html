@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<form
-		th:fragment="form(action, method, submitType)"
+		th:fragment="crud-form(action, method, submitType)"
 		th:action="${action}"
 		th:method="${method}"
 		>
@@ -17,6 +17,15 @@
 		<input type="number" name="price" th:field="*{price}"><br>
 		
 		<button type="submit" th:text="${submitType}"></button>
+	</form>
+	
+	<form 
+		th:fragment="search(obj, action)"
+		method="GET" 
+		th:action="${action}">
+		<label for="query">Name: </label>
+		<input type="text" id="query" name="query" th:value="${query}">
+		<input type="submit" value="Search">
 	</form>
 </body>
 </html>

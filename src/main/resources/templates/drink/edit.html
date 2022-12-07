@@ -20,7 +20,7 @@
     	</li>
 	</ul>
 	
-	<div th:insert="fragments :: form('/drink/edit/{id} (id = *{id})', 'POST', 'Edit')"></div>
+	<div th:insert="fragments :: crud-form('/drink/edit/{id} (id = *{id})', 'POST', 'Edit')"></div>
 	
 </body>
 </html>
