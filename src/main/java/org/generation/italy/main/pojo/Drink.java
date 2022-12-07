@@ -1,5 +1,7 @@
 package org.generation.italy.main.pojo;
 
+import org.generation.italy.main.interfaces.PriceableInt;
+
 import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "drink")
-public class Drink {
+public class Drink implements PriceableInt {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
